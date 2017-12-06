@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+#DEB_MAKE_CHECK_TARGET = test_bitcoin
+#build/bitcoind::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_bitcoin)
+
+DEB_INSTALL_EXAMPLES_GopnikCoind += debian/examples/*
+DEB_INSTALL_MANPAGES_GopnikCoind += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix GopnikCoind
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f GopnikCoin-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake GopnikCoin-qt.pro USE_QRCODE=1
+
+override_dh_auto_test:
+	cd src; $(MAKE) -f makefile.unix test_GopnikCoin
+	src/test_GopnikCoin
+
+# Ensure wrapper is set executable
+binary-post-install/GopnikCoind:
+	chmod +x $(cdbs_curdestdir)usr/bin/GopnikCoind
+binary-post-install/GopnikCoin-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/GopnikCoin-qt

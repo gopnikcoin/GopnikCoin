@@ -1,0 +1,11 @@
+[Protocol]
+exec=GopnikCoin-qt '%u'
+protocol=GopnikCoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

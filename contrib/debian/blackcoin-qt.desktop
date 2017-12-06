@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GopnikCoin
+Comment=GopnikCoin P2P Cryptocurrency
+Comment[fr]=GopnikCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=GopnikCoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/GopnikCoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/GopnikCoin;
+Categories=Office;

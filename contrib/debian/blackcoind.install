@@ -1,0 +1,2 @@
+debian/bin/GopnikCoind usr/bin
+src/GopnikCoind usr/lib/GopnikCoin
